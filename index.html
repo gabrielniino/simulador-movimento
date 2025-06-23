@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulador de Movimento</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Simulador de Movimento</h1>
+
+        <label for="funcao">Função posição s(t):</label>
+        <input type="text" id="funcao" value="t^3 - 6t^2 + 9t" />
+        <div id="expressoes" style="margin-top:15px; font-size: 18px; color:#333;"></div>
+        <button onclick="gerarGraficos()">Gerar Gráficos</button>
+
+
+        <div class="graficos">
+            <canvas id="graficoGeral"></canvas>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
