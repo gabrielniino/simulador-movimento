@@ -2,32 +2,46 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Simulador de Movimento</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador de Movimento</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Simulador de Movimento</h1>
+  <div class="container">
+    <h1>Simulador de Movimento</h1>
 
-        <label for="funcao">Função posição s(t):</label>
-        <input type="text" id="funcao" value="t^3 - 6t^2 + 9t" />
-        <div id="msgErro" style="color: red; margin-bottom: 10px;"></div>
-        <div id="expressoes" style="margin-top:15px; font-size: 18px; color:#333;"></div>
-        <button onclick="gerarGraficos()">Gerar Gráficos</button>
+    <label for="funcao">Função posição s(t):</label>
+    <input type="text" id="funcao" value="t^3 - 6t^2 + 9t" />
+    <div id="msgErro" style="color: red; margin-bottom: 10px;"></div>
 
+    <div id="expressoes" style="margin-top:15px; font-size: 18px; color:#333;"></div>
 
-        <div class="graficos">
-            <canvas id="graficoGeral"></canvas>
-        </div>
+    <fieldset style="margin-top:20px; padding:10px; border-radius:5px; border: 1px solid #ccc;">
+      <legend>Configurações do intervalo de tempo</legend>
+
+      <label for="t_inicial">Tempo inicial (t₀):</label>
+      <input type="number" id="t_inicial" value="0" step="0.1" min="0" style="width: 80px;" />
+
+      <label for="t_final" style="margin-left: 15px;">Tempo final (t₁):</label>
+      <input type="number" id="t_final" value="10" step="0.1" min="0" style="width: 80px;" />
+
+      <label for="passo" style="margin-left: 15px;">Passo (Δt):</label>
+      <input type="number" id="passo" value="0.1" step="0.01" min="0.01" style="width: 80px;" />
+    </fieldset>
+
+    <button onclick="gerarGraficos()" style="margin-top: 15px;">Gerar Gráficos</button>
+
+    <div class="graficos">
+      <canvas id="graficoGeral"></canvas>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

@@ -24,7 +24,22 @@ function gerarGraficos() {
 
     exibirExpressoes(funcaoPosicao, funcaoVelocidade, funcaoAceleracao);
 
-    const intervalo = math.range(0, 10, 0.1, true).toArray().map(t => Math.round(t * 100) / 100);
+    // Ler valores do HTML
+    const tInicial = parseFloat(document.getElementById("t_inicial").value);
+    const tFinal = parseFloat(document.getElementById("t_final").value);
+    const passo = parseFloat(document.getElementById("passo").value);
+
+    // Validar valores básicos
+    if (isNaN(tInicial) || isNaN(tFinal) || isNaN(passo) || passo <= 0 || tFinal <= tInicial) {
+        document.getElementById("msgErro").textContent = "Intervalo ou passo inválidos. Verifique os valores.";
+        return; // Interrompe execução
+    } else {
+        document.getElementById("msgErro").textContent = ""; // limpa mensagem
+    }
+
+    // Criar array do intervalo de tempo com os valores lidos
+    const intervalo = math.range(tInicial, tFinal, passo, true).toArray().map(t => Math.round(t * 100) / 100);
+
     const valoresPosicao = intervalo.map(t => funcaoPosicao.evaluate({ t }));
     const valoresVelocidade = intervalo.map(t => funcaoVelocidade.evaluate({ t }));
     const valoresAceleracao = intervalo.map(t => funcaoAceleracao.evaluate({ t }));
